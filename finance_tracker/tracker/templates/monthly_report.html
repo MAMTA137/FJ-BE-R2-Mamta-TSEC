@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Monthly Report{% endblock %}
+
+{% block content %}
+<h1>Monthly Report</h1>
+<p>From: {{ start_date }} To: {{ end_date }}</p>
+<p>Income: ${{ income }}</p>
+<p>Expenses: ${{ expenses }}</p>
+<p>Savings: ${{ savings }}</p>
+<a href="{% url 'dashboard' %}">Back to Dashboard</a>
+{% endblock %}

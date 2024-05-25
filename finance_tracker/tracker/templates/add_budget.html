@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Add Budget{% endblock %}
+
+{% block content %}
+<h1>Add Budget</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="expense_category">Expense Category:</label>
+    <select id="expense_category" name="expense_category">
+        {% for category in expense_categories %}
+        <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" step="0.01">
+    <br>
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" name="start_date">
+    <br>
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date">
+    <br>
+    <button type="submit">Add Budget</button>
+</form>
+<a href="{% url 'dashboard' %}">Back to Dashboard</a>
+{% endblock %}
