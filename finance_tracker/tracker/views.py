@@ -7,9 +7,6 @@ from datetime import timedelta
 from django.core.files.storage import FileSystemStorage
 
 
-def signup_view(request):
-    
-    return render(request, 'signup.html')
 
 @login_required
 def dashboard(request):
