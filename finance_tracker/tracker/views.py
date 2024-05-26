@@ -5,7 +5,7 @@ from django.db.models import Sum
 from django.utils import timezone
 from datetime import timedelta
 from django.core.files.storage import FileSystemStorage
-from django.http import HttpResponse
+
 
 
 @login_required
@@ -101,9 +101,8 @@ def monthly_report(request):
         'start_date': start_date,
         'end_date': end_date,
     }
-    # return render(request, 'monthly_report.html', context)
-    html_content = render(request, 'monthly_report.html', context)
-    return HttpResponse(html_content)
+    return render(request, 'monthly_report.html', context)
+    
 
 @login_required
 def add_budget(request):
