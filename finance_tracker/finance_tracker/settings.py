@@ -24,7 +24,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
    'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth.templates.registration',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'django.contrib.auth'
 ]
 
 MIDDLEWARE = [

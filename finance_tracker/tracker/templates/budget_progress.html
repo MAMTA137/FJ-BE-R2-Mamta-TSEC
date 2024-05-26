@@ -3,26 +3,34 @@
 {% block title %}Budget Progress{% endblock %}
 
 {% block content %}
-<h1>Budget Progress</h1>
-<table>
-    <thead>
-        <tr>
-            <th>Category</th>
-            <th>Budgeted</th>
-            <th>Spent</th>
-            <th>Remaining</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in progress %}
-        <tr>
-            <td>{{ item.category }}</td>
-            <td>{{ item.budgeted }}</td>
-            <td>{{ item.spent }}</td>
-            <td>{{ item.remaining }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<a href="{% url 'dashboard' %}">Back to Dashboard</a>
+<div class="m-4">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Budget Progress</h1>
+    <div class="mt-6 overflow-hidden rounded-xl border shadow">
+        <table class="min-w-full border-separate border-spacing-y-2 border-spacing-x-2">
+            <thead class="border-b">
+                <tr>
+                    <th class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Category</th>
+                    <th class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Budgeted</th>
+                    <th class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Spent</th>
+                    <th class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Remaining</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in progress %}
+                <tr>
+                    <td class="whitespace-no-wrap py-4 text-sm font-bold text-gray-900 sm:px-6">{{ item.category }}</td>
+                    <td class="whitespace-no-wrap py-4 text-sm font-normal text-gray-500 sm:px-6">{{ item.budgeted }}</td>
+                    <td class="whitespace-no-wrap py-4 text-sm font-normal text-gray-500 sm:px-6">{{ item.spent }}</td>
+                    <td class="whitespace-no-wrap py-4 text-sm font-normal text-gray-500 sm:px-6">{{ item.remaining }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="mt-6">
+        <a href="{% url 'dashboard' %}" class="whitespace-nowrap rounded-xl bg-blue-700 px-5 py-3 font-medium text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-2 hover:bg-blue-600">
+            Back to Dashboard
+        </a>
+    </div>
+</div>
 {% endblock %}

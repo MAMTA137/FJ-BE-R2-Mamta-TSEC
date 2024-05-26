@@ -2,22 +2,55 @@
 <html>
 <head>
     <title>{% block title %}Finance Tracker{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-                {% else %}
-                <li><a href="{% url 'account_login' %}">Login</a></li>
-                <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-                {% endif %}
-            </ul>
+    
+    <header class="text-slate-700 container relative mx-auto flex flex-col overflow-hidden px-4 py-4 lg:flex-row lg:items-center">
+        <a href="#" class="flex items-center whitespace-nowrap text-2xl font-black">
+          
+          Finance
+        </a>
+        <input type="checkbox" class="peer hidden" id="navbar-open" />
+        <label class="absolute top-5 right-5 cursor-pointer lg:hidden" for="navbar-open">
+          <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </label>
+        <nav aria-label="Header Navigation" class="peer-checked:pt-8 peer-checked:max-h-60 flex max-h-0 w-full flex-col items-center overflow-hidden transition-all lg:ml-24 lg:max-h-full lg:flex-row">
+          <ul class="flex w-full flex-col place-items-end space-y-2 lg:flex-row lg:justify-end lg:space-y-0">
+            <li class="lg:mr-12"><a class="rounded text-gray-700 transition focus:outline-none focus:ring-1 focus:ring-blue-700 focus:ring-offset-2" href="{% url 'dashboard' %}">Dashboard</a></li>
+            {% if user.is_authenticated %}
+            <li class="lg:mr-12"><a class="rounded text-gray-700 transition focus:outline-none focus:ring-1 focus:ring-blue-700 focus:ring-offset-2"href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <hr class="mt-4 w-full lg:hidden" />
+            <div class="p-4 m-auto bg-white border border-gray-300 rounded-md max-w-md">
+                <h2 class="text-2xl font-bold mb-6">Log In</h2>
+                <form method="post" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-700">Log In</button>
+                </form>
+                <p class="mt-4">Don't have an account? <a href="{% url 'account_signup' %}" class="text-blue-500 hover:underline">Sign Up</a></p>
+            </div>
+            
+            <div class="p-4 m-auto bg-white border border-gray-300 rounded-md max-w-md">
+                <h2 class="text-2xl font-bold mb-6">Sign Up</h2>
+                <form method="post" action="{% url 'account_signup' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-700">Sign Up</button>
+                </form>
+                <p class="mt-4">Already have an account? <a href="{% url 'account_login' %}" class="text-blue-500 hover:underline">Log In</a></p>
+            </div>
+            
+            
+            {% endif %}
+          </ul>
+         
         </nav>
-    </header>
+      </header>
+      
     <div>
         {% block content %}{% endblock %}
     </div>

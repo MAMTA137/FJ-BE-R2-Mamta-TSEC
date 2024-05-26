@@ -3,38 +3,40 @@
 {% block title %}Add Transaction{% endblock %}
 
 {% block content %}
-<h1>Add Transaction</h1>
+<div class="m-4">
+<h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-2xl md:text-2xl p-6  flex justify-center">Add Transaction</h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <label for="date">Date:</label>
-    <input type="date" id="date" name="date">
+    <label for="date" class="text-lg font-semibold">Date:</label>
+    <input type="date" id="date" name="date" class="border-2 border-gray-300 rounded px-3 py-2 w-56" >
     <br>
-    <label for="amount">Amount:</label>
-    <input type="number" id="amount" name="amount" step="0.01">
+    <label for="amount" class="text-lg font-semibold">Amount:</label>
+    <input type="number" id="amount" name="amount" class="py-2 m-2 px-3 bg-white border border-gray-200 rounded-lg dark:bg-neutral-900 dark:border-neutral-700"  step="0.01">
     <br>
-    <label for="description">Description:</label>
-    <input type="text" id="description" name="description">
+    <label for="description" class="text-lg font-semibold">Description:</label>
+    <input type="text" id="description" name="description" class="m-2  bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" >
     <br>
-    <label for="income_source">Income Source:</label>
-    <select id="income_source" name="income_source">
+    <label for="income_source" class="text-lg font-semibold">Income Source:</label>
+    <select id="income_source" name="income_source" class=" bg-gray-200 m-2 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
         <option value="">Select Income Source</option>
         {% for source in income_sources %}
         <option value="{{ source.id }}">{{ source.name }}</option>
         {% endfor %}
     </select>
     <br>
-    <label for="expense_category">Expense Category:</label>
-    <select id="expense_category" name="expense_category">
+    <label for="expense_category" class="text-lg  font-semibold">Expense Category:</label>
+    <select id="expense_category" name="expense_category" class=" bg-gray-200 m-2 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
         <option value="">Select Expense Category</option>
         {% for category in expense_categories %}
         <option value="{{ category.id }}">{{ category.name }}</option>
         {% endfor %}
     </select>
     <br>
-    <label for="receipt">Receipt:</label>
-    <input type="file" id="receipt" name="receipt">
+    <label for="receipt" class="text-lg font-semibold">Receipt:</label>
+    <input type="file" id="receipt" name="receipt" class="m-2 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
     <br>
-    <button type="submit">Add Transaction</button>
+    <button type="submit" class="whitespace-nowrap mt-2 rounded-xl bg-blue-700 px-5 py-3 font-medium text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-2 hover:bg-blue-600" >Add Transaction</button>
 </form>
-<a href="{% url 'dashboard' %}">Back to Dashboard</a>
+<a class="group order-1 my-2 flex w-full items-center justify-center rounded-lg bg-gray-200 py-2 text-center font-bold text-gray-600 outline-none transition sm:w-40 focus:ring hover:bg-gray-300" href="{% url 'dashboard' %}">Back to Dashboard</a>
+</div>
 {% endblock %}

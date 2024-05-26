@@ -3,10 +3,20 @@
 {% block title %}Monthly Report{% endblock %}
 
 {% block content %}
-<h1>Monthly Report</h1>
-<p>From: {{ start_date }} To: {{ end_date }}</p>
-<p>Income: ${{ income }}</p>
-<p>Expenses: ${{ expenses }}</p>
-<p>Savings: ${{ savings }}</p>
-<a href="{% url 'dashboard' %}">Back to Dashboard</a>
+<div class="container mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Monthly Report</h1>
+    <div class="bg-white p-4 rounded-lg shadow-md">
+        <p class="text-lg text-gray-700"><span class="font-semibold">From:</span> {{ start_date }} <span class="font-semibold">To:</span> {{ end_date }}</p>
+        <div class="mt-4">
+            <p class="text-lg text-green-600"><span class="font-semibold">Income:</span> ${{ income }}</p>
+            <p class="text-lg text-red-600"><span class="font-semibold">Expenses:</span> ${{ expenses }}</p>
+            <p class="text-lg text-blue-600"><span class="font-semibold">Savings:</span> ${{ savings }}</p>
+        </div>
+    </div>
+    <div class="mt-6">
+        <a href="{% url 'dashboard' %}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
+            Back to Dashboard
+        </a>
+    </div>
+</div>
 {% endblock %}

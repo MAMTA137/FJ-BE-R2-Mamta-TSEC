@@ -3,31 +3,33 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
+<div class="m-4 ">
 <h1>Dashboard</h1>
 <p>Income: ${{ income }}</p>
 <p>Expenses: ${{ expenses }}</p>
 <p>Savings: ${{ savings }}</p>
 
 <h2>Transactions</h2>
-<table>
-    <thead>
+<div class="mt-6 overflow-hidden rounded-xl border shadow">
+<table class="min-w-full border-separate border-spacing-y-2 border-spacing-x-2">
+    <thead class="hidden border-b lg:table-header-group">
         <tr>
-            <th>Date</th>
-            <th>Amount</th>
-            <th>Description</th>
-            <th>Income Source</th>
-            <th>Expense Category</th>
-            <th>Actions</th>
+            <th  class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Date</th>
+            <th class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Amount</th>
+            <th class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Description</th>
+            <th class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Income Source</th>
+            <th class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Expense Category</th>
+            <th class="whitespace-normal py-4 text-sm font-medium text-gray-500 sm:px-6">Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for transaction in transactions %}
         <tr>
-            <td>{{ transaction.date }}</td>
-            <td>{{ transaction.amount }}</td>
-            <td>{{ transaction.description }}</td>
-            <td>{{ transaction.income_source }}</td>
-            <td>{{ transaction.expense_category }}</td>
+            <td class="whitespace-no-wrap py-4 text-sm font-bold text-gray-900 sm:px-6">{{ transaction.date }}</td>
+            <td  class="font-normal text-gray-500" >{{ transaction.amount }}</td>
+            <td class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell">{{ transaction.description }}</td>
+            <td class="whitespace-no-wrap py-4 px-6 text-right text-sm text-gray-600 lg:text-left">{{ transaction.income_source }}</td>
+            <td class="inline-flex items-center rounded-full bg-blue-600 py-2 px-3 text-xs text-white">{{ transaction.expense_category }}</td>
             <td>
                 <a href="{% url 'edit_transaction' transaction.id %}">Edit</a> |
                 <a href="{% url 'delete_transaction' transaction.id %}">Delete</a>
@@ -36,5 +38,9 @@
         {% endfor %}
     </tbody>
 </table>
-<a href="{% url 'add_transaction' %}">Add Transaction</a>
+</div>
+<div class="mt-4" >
+<a class="whitespace-nowrap  rounded-xl bg-blue-700 px-5 py-3 font-medium text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-2 hover:bg-blue-600" href="{% url 'add_transaction' %}">Add Transaction</a>
+</div>
+</div>
 {% endblock %}
