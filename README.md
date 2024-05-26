@@ -8,6 +8,7 @@ Users should be able to get insights and generate reports on their financial sta
 The development of this project will be phased to ensure structured progress.
 
 ## Functionality
+**Note**: For verification check Mail in Spam 
 
 User Authentication: Implement user authentication using Django's in-built authentication system. Users should be able to register, log in, and manage their profiles.
 
